@@ -4,24 +4,26 @@ class Cours
 {
     private $id;
     private $date_aj;
-    private $ressource;
+    private $nom;
+    private $category;
     private $idEnseignant;
     private $description;
 
     /**
      * @param $id
      * @param $date_aj
-     * @param $ressource
+     * @param $nom
      * @param $idEnseignant
      * @param $description
      */
-    public function __construct($id, $date_aj, $ressource, $idEnseignant, $description)
+    public function __construct( $nom, $idEnseignant, $description, $category)
     {
         $this->id = $id;
         $this->date_aj = $date_aj;
-        $this->ressource = $ressource;
+        $this->nom = $nom;
         $this->idEnseignant = $idEnseignant;
         $this->description = $description;
+        $this->category = $category;
     }
 
 
@@ -31,6 +33,22 @@ class Cours
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category): void
+    {
+        $this->category = $category;
     }
 
     /**
@@ -60,17 +78,17 @@ class Cours
     /**
      * @return mixed
      */
-    public function getRessource()
+    public function getNom()
     {
-        return $this->ressource;
+        return $this->nom;
     }
 
     /**
-     * @param mixed $ressource
+     * @param mixed $nom
      */
-    public function setRessource($ressource)
+    public function setNom($nom)
     {
-        $this->ressource = $ressource;
+        $this->nom = $nom;
     }
 
     /**

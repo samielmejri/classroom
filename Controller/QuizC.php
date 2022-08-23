@@ -36,7 +36,7 @@ Class QuizC {
 
     function searchquiz($sh)
     {
-        $requete = "select * from quiz where nbQuestion like '%".$sh."%' or idEnseignant like '%".$sh."%' or deadline like '%".$sh."%' ";
+        $requete = "select * from quiz where titre like '%".$sh."%' or idCours like '%".$sh."%' or deadline like '%".$sh."%' ";
         $config = config::getConnexion();
         try {
             $querry = $config->prepare($requete);
@@ -73,13 +73,13 @@ Class QuizC {
         try {
             $querry = $config->prepare('
                 INSERT INTO quiz
-                (nbQuestion,idEnseignant,deadline)
+                (titre,idCours,deadline)
                 VALUES
-                (:nbQuestion,:idEnseignant,:deadline)
+                (:titre,:idCours,:deadline)
                 ');
             $querry->execute([
-                'nbQuestion'=>$quiz->getNbQuestion(),
-                'idEnseignant'=>$quiz->getIdEnseignant(),
+                'titre'=>$quiz->getTitre(),
+                'idCours'=>$quiz->getIdCours(),
                 'deadline'=>$quiz->getDeadline()
             ]);
         } catch (PDOException $th) {
@@ -92,16 +92,15 @@ Class QuizC {
         try {
             $querry = $config->prepare('
                 UPDATE quiz SET
-              nbQuestion=:nbQuestion,idEnseignant=:idEnseignant,deadline=:deadline,nbReussite=:nbReussite
+              titre=:titre,idCours=:idCours,deadline=:deadline
 
                 where id=:id
                 ');
             $querry->execute([
                 'id'=>$quiz->getId(),
-                'nbQuestion'=>$quiz->getNbQuestion(),
-                'idEnseignant'=>$quiz->getIdEnseignant(),
-                'deadline'=>$quiz->getDeadline(),
-                'nbReussite'=>$quiz->getNbReussite()
+                'titre'=>$quiz->getTitre(),
+                'idCours'=>$quiz->getIdCours(),
+                'deadline'=>$quiz->getDeadline()
             ]);
         } catch (PDOException $th) {
             $th->getMessage();

@@ -3,44 +3,58 @@
 class Quiz
 {
     private $id;
-    private $nbQuestion;
+    private $titre;
     private $deadline;
     private $date_deb;
-    private $nbReussite;
-    private $idEnseignant;
+    private $idCours;
 
     /**
      * @param $id
-     * @param $nbQuestion
      * @param $deadline
      * @param $date_deb
-     * @param $nbReussite
      */
-    public function __construct($id, $nbQuestion, $deadline, $date_deb, $nbReussite, $idEnseignant)
+    public function __construct($id,  $deadline, $idCours, $titre)
     {
         $this->id = $id;
-        $this->nbQuestion = $nbQuestion;
         $this->deadline = $deadline;
-        $this->date_deb = $date_deb;
-        $this->nbReussite = $nbReussite;
-        $this->idEnseignant = $idEnseignant;
+        $this->idCours = $idCours;
+        $this->titre = $titre;
     }
 
     /**
      * @return mixed
      */
-    public function getIdEnseignant()
+    public function getTitre()
     {
-        return $this->idEnseignant;
+        return $this->titre;
     }
 
     /**
-     * @param mixed $idEnseignant
+     * @param mixed $titre
      */
-    public function setIdEnseignant($idEnseignant)
+    public function setTitre($titre): void
     {
-        $this->idEnseignant = $idEnseignant;
+        $this->titre = $titre;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIdCours()
+    {
+        return $this->idCours;
+    }
+
+    /**
+     * @param mixed $idCours
+     */
+    public function setIdCours($idCours): void
+    {
+        $this->idCours = $idCours;
+    }
+
+
+
 
 
 
@@ -60,21 +74,6 @@ class Quiz
         $this->id = $id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getNbQuestion()
-    {
-        return $this->nbQuestion;
-    }
-
-    /**
-     * @param mixed $nbQuestion
-     */
-    public function setNbQuestion($nbQuestion)
-    {
-        $this->nbQuestion = $nbQuestion;
-    }
 
     /**
      * @return mixed
@@ -108,21 +107,7 @@ class Quiz
         $this->date_deb = $date_deb;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getNbReussite()
-    {
-        return $this->nbReussite;
-    }
 
-    /**
-     * @param mixed $nbReussite
-     */
-    public function setNbReussite($nbReussite)
-    {
-        $this->nbReussite = $nbReussite;
-    }
 
 
 

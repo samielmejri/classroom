@@ -1,3 +1,15 @@
+<?php
+include_once ('../../Controller/CoursC.php');
+include_once ('../../Controller/QuizC.php');
+include_once ('../../Controller/UtilisateurC.php');
+
+$coursC = new CoursC();
+$cours = $coursC->getAllcours();
+$quizC = new QuizC();
+$quizs = $quizC->getAllquiz();
+$userC = new UtilisateurC();
+$users = $userC->afficher_Utilisateur();
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -11,7 +23,7 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Ample Admin Lite Template by WrapPixel</title>
+    <title>Ample Admin The Grill</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
@@ -115,10 +127,7 @@
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <aside class="left-sidebar" data-sidebarbg="skin6">
+        <!-- ============================================================== --> <aside class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
@@ -129,7 +138,7 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.php"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
-                                <span class="hide-menu">Dashboard</span>
+                                <span class="hide-menu">Statistics</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -140,26 +149,26 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="tables.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Basic Table</span>
+                                <span class="hide-menu">Tables</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
+                        <!-- <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="fontawesome.html"
                                 aria-expanded="false">
                                 <i class="fa fa-font" aria-hidden="true"></i>
                                 <span class="hide-menu">Icon</span>
                             </a>
-                        </li>
-                        <li class="sidebar-item">
+                        </li> -->
+                        <!-- <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="map-google.html"
                                 aria-expanded="false">
                                 <i class="fa fa-globe" aria-hidden="true"></i>
                                 <span class="hide-menu">Google Map</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.html"
                                 aria-expanded="false">
@@ -167,18 +176,14 @@
                                 <span class="hide-menu">Blank Page</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
+                        <!-- <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.html"
                                 aria-expanded="false">
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                                 <span class="hide-menu">Error 404</span>
                             </a>
-                        </li>
-                        <li class="text-center p-20 upgrade-btn">
-                            <a href="https://www.wrappixel.com/templates/ampleadmin/"
-                                class="btn d-grid btn-danger text-white" target="_blank">
-                                Upgrade to Pro</a>
-                        </li>
+                        </li> -->
+                        
                     </ul>
 
                 </nav>
@@ -192,23 +197,24 @@
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="page-wrapper" style="min-height: 250px;">
+        <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Blank Page</h4>
+                        <h4 class="page-title">Tables</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
-                                <li><a href="#" class="fw-normal">Dashboard</a></li>
+                                <li><a href="dashboard.php" class="fw-normal">Dashboard</a></li>
                             </ol>
-                            <a href="https://www.wrappixel.com/templates/ampleadmin/" target="_blank"
-                                class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">Upgrade
-                                to Pro</a>
+                            <ol class="breadcrumb ms-auto">
+                                <li><a href="./profile.html" class="fw-normal">Profile</a></li>
+                            </ol>
+                            
                         </div>
                     </div>
                 </div>
@@ -225,12 +231,152 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Blank Page</h3>
+                            <h3 class="box-title">Table cours </h3>
+                            <a href="ajouterCours.php"> <p class="text-muted">ajouter cours </p></a>
+                            <div class="table-responsive">
+                                <table class="table text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-top-0">#Id</th>
+                                            <th class="border-top-0">Nom</th>
+                                            <th class="border-top-0">category</th>
+                                            <th class="border-top-0">description</th>
+
+                                            <th class="border-top-0">id enseignant</th>
+                                            <th class="border-top-0">date ajout</th>
+                                            <th class="border-top-0">description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <div class="container">
+                                            <?php
+                                            foreach ($cours as $row)
+                                            {
+                                            ?>
+                                        <tr>
+                                            <td><?php  echo $row['id']; ?></td>
+                                            <td><?php  echo $row['nom']; ?></td>
+                                            <td><?php  echo $row['category']; ?></td>
+                                            <td><?php  echo $row['description']; ?></td>
+
+                                            <td><?php  echo $row['idEnseignant']; ?></td>
+                                            <td><?php  echo $row['description']; ?></td>
+                                            <td>
+                                                <button class="btn btn-primary"><a href="modifierCours.php?id=<?php echo $row['id'];?>" class="text-light"> <i class="fa fas fa-edit style=font-size:36px" ></i></a></button>
+                                                <button class="btn btn-danger"><a href="supprimerCours.php?id=<?php echo $row['id'];?>" class="text-light"> <i class="fa fa-trash"></i></a></button>
+                                            </td>
+                                        </tr>
+                                            <?php
+
+                                            }
+                                            ?>
+                                        
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Table Quiz </h3>
+                            <a href="ajouterQuiz.php"> <p class="text-muted">ajouter quiz</p></a>
+                            <div class="table-responsive">
+                                <table class="table text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-top-0">#id cours</th>
+                                            <th class="border-top-0">titre</th>
+                                            <th class="border-top-0">date debut</th>
+                                         
+                                            <th class="border-top-0">deadline</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    foreach ($quizs as $row)
+                                    {
+                                    ?>
+                                        <tr>
+                                            <td><?php  echo $row['idCours']; ?></td>
+                                            <td><?php  echo $row['titre']; ?></td>
+                                            <td><?php  echo $row['date_deb']; ?></td>
+                                            <td><?php  echo $row['deadline']; ?></td>
+                                            <td>
+                                                <button class="btn btn-primary"><a href="modifierQuiz.php?id=<?php echo $row['id'];?>" class="text-light"> <i class="fa fas fa-edit style=font-size:36px" ></i></a></button>
+                                                <button class="btn btn-danger"><a href="supprimerQuiz.php?id=<?php echo $row['id'];?>" class="text-light"> <i class="fa fa-trash"></i></a></button>
+                                            </td>
+                                        </tr>
+
+
+
+                                    <?php
+                                    }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Table Utilisateurs </h3>
+                            <a href="ajouterUtilisateur.php"> <p class="text-muted">Add User</p></a>
+                            <div class="table-responsive">
+                                <table class="table text-nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th class="border-top-0">username</th>
+                                        <th class="border-top-0">nom complet</th>
+                                        <th class="border-top-0">email</th>
+
+                                        <th class="border-top-0">password</th>
+                                        <th class="border-top-0">role</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <?php
+                                        foreach ($users as $commentaire)
+                                        {
+                                        ?>
+                                        <td><?php echo $commentaire['username'] ; ?></td>
+                                        <td><?php echo $commentaire['prenom_user'].' '.$commentaire['nom_user'] ; ?></td>
+                                        <td><?php echo $commentaire['email_user'] ; ?></td>
+                                        <td><?php echo $commentaire['password_user'] ; ?> </td>
+                                        <td><?php echo $commentaire['role_user'] ; ?></td>
+                                        <td>
+                                            <button class="btn btn-primary"><a href="modifierCommentaire.php?id=<?php echo $commentaire['id'];?>" class="text-light"> <i class="fa fas fa-edit style=font-size:36px" ></i></a></button>
+                                            <button class="btn btn-danger"><a href="supprimerACommentaire.php?id=<?php echo $commentaire['id'];?>" class="text-light"> <i class="fa fa-trash"></i></a></button>
+                                        <td>
+                                            <?php
+                                            }
+                                            ?>
+                                    </tr>
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -248,9 +394,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center"> 2021 © Ample Admin brought to you by <a
-                    href="https://www.wrappixel.com/">wrappixel.com</a>
-            </footer>
+          
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->

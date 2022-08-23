@@ -36,7 +36,7 @@ Class CoursC {
 
     function searchcours($sh)
     {
-        $requete = "select * from cours where ressource like '%".$sh."%' or idEnseignant like '%".$sh."%' or description like '%".$sh."%' ";
+        $requete = "select * from cours where nom like '%".$sh."%' or idEnseignant like '%".$sh."%' or description like '%".$sh."%' ";
         $config = config::getConnexion();
         try {
             $querry = $config->prepare($requete);
@@ -73,12 +73,13 @@ Class CoursC {
         try {
             $querry = $config->prepare('
                 INSERT INTO cours
-                (ressource,idEnseignant,description)
+                (nom,category,idEnseignant,description)
                 VALUES
-                (:ressource,:idEnseignant,:description)
+                (:nom,:category,:idEnseignant,:description)
                 ');
             $querry->execute([
-                'ressource'=>$cours->getRessource(),
+                'nom'=>$cours->getNom(),
+                'category'=>$cours->getCategory(),
                 'idEnseignant'=>$cours->getIdEnseignant(),
                 'description'=>$cours->getDescription()
             ]);
@@ -92,13 +93,14 @@ Class CoursC {
         try {
             $querry = $config->prepare('
                 UPDATE cours SET
-              ressource=:ressource,idEnseignant=:idEnseignant,description=:description
+              nom=:nom,category=:category,idEnseignant=:idEnseignant,description=:description
 
                 where id=:id
                 ');
             $querry->execute([
                 'id'=>$cours->getId(),
-                'ressource'=>$cours->getRessource(),
+                'nom'=>$cours->getNom(),
+                'category'=>$cours->getCategory(),
                 'idEnseignant'=>$cours->getIdEnseignant(),
                 'description'=>$cours->getDescription()
             ]);
