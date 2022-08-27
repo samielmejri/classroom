@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Classroom &mdash;</title>
+  <title>Academics &mdash; Website by Colorlib</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -53,10 +53,23 @@
             <a href="#" class="small mr-3"><span class="icon-phone2 mr-2"></span> 10 20 123 456</a> 
             <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> info@mydomain.com</a> 
           </div>
-          <div class="col-lg-3 text-right">
-            <a href="login.html" class="small mr-3"><span class="icon-unlock-alt"></span> Log In</a>
-            <a href="register.html" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
-          </div>
+          <?php
+          session_start();
+          if (isset($_SESSION['username'])){
+
+          echo'<div class="col-lg-3 text-right">';
+            echo '<a href="" class="small mr-3"><span class="icon-person"></span>Welcome back , '.$_SESSION['nom_prenom_user'].'</a>';
+              echo '<a href="signOut.php" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-sign-out"></span> Sign out</a>';
+              echo '</div>';
+          } else {
+
+
+              echo ' <div class="col-lg-3 text-right">';
+              echo ' <a href="login.php" class="small mr-3"><span class="icon-unlock-alt"></span> Log In</a>';
+           echo ' <a href="register.php" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>';
+         echo ' </div>';
+          }
+            ?>
         </div>
       </div>
     </div>
@@ -86,7 +99,7 @@
                   <a href="admissions.html" class="nav-link text-left">Admissions</a>
                 </li>
                 <li>
-                  <a href="courses.html" class="nav-link text-left">Courses</a>
+                  <a href="courses.php" class="nav-link text-left">Courses</a>
                 </li>
                 <li>
                     <a href="contact.html" class="nav-link text-left">Contact</a>
@@ -117,7 +130,7 @@
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
-              <h1>Classroom</h1>
+              <h1>Academics University</h1>
             </div>
           </div>
         </div>
@@ -143,7 +156,7 @@
         <div class="row mb-5 justify-content-center text-center">
           <div class="col-lg-4 mb-5">
             <h2 class="section-title-underline mb-5">
-              <span>Why Classroom Works</span>
+              <span>Why Academics Works</span>
             </h2>
           </div>
         </div>
@@ -464,7 +477,7 @@
           </div>
           <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
             <span class="icon flaticon-school-material"></span>
-            <h3>Classroom Principle</h3>
+            <h3>Academics Principle</h3>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
               Dolore, amet reprehenderit.</p>
           </div>
